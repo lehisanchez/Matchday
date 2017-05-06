@@ -1,0 +1,17 @@
+chelsea:
+  name: Chelsea
+  image_url: http://upload.wikimedia.org/wikipedia/de/5/5c/Chelsea_crest.svg
+  code: CHE
+  api_football_data_id: 61
+
+liverpool:
+  name: Liverpool
+  image_url: http://upload.wikimedia.org/wikipedia/de/0/0a/FC_Liverpool.svg
+  code: LFC
+  api_football_data_id: 64
+
+arsenal:
+  name: Arsenal
+  image_url: http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg
+  code: ARS
+  api_football_data_id: 57
