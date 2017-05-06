@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.4.1
+  
+before_install:
+  - gem update --system
+  - gem --version
+  
+notifications:
+  email: false
+  slack: matchday-app:PBlE7GcM5hJLlUB92YFwsGrt
