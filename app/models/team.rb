@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
-  
+
+  has_and_belongs_to_many :leagues
   has_many :standings
   
   validates :name,
@@ -19,5 +20,11 @@ class Team < ApplicationRecord
     with: %r{\.(gif|jpg|png|svg)\Z}i,
     message: 'must be a URL for GIF, JPG, PNG, or SVG image.'
   }
+  
+  private
+  
+  def self.default_scope
+    order(:name)
+  end
                             
 end
