@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506221957) do
+ActiveRecord::Schema.define(version: 20170506230623) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,34 @@ ActiveRecord::Schema.define(version: 20170506221957) do
     t.integer "api_football_data_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "standings", force: :cascade do |t|
+    t.integer "league_id"
+    t.integer "team_id"
+    t.integer "matchday"
+    t.integer "games_played"
+    t.integer "points"
+    t.integer "goals"
+    t.integer "goals_against"
+    t.integer "goal_difference"
+    t.integer "wins"
+    t.integer "draws"
+    t.integer "losses"
+    t.integer "home_goals"
+    t.integer "home_goals_against"
+    t.integer "home_wins"
+    t.integer "home_draws"
+    t.integer "home_losses"
+    t.integer "away_goals"
+    t.integer "away_goals_against"
+    t.integer "away_wins"
+    t.integer "away_draws"
+    t.integer "away_losses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_standings_on_league_id"
+    t.index ["team_id"], name: "index_standings_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|

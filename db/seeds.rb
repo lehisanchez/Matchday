@@ -1,12 +1,10 @@
-League.delete_all
-
-League.create( name:'Premier League', 
-               image_url:'https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg',
-               current_matchday: 1,
-               number_of_matchdays: 38,
-               number_of_teams: 20,
-               number_of_games: 380,
-               api_football_data_id:426)
+League.create(name:'Premier League', 
+              image_url:'https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg',
+              current_matchday: 1,
+              number_of_matchdays: 38,
+              number_of_teams: 20,
+              number_of_games: 380,
+              api_football_data_id:426)
                
 League.create( name:'La Liga',        
                image_url:'https://upload.wikimedia.org/wikipedia/commons/1/13/LaLiga.svg',
@@ -49,9 +47,8 @@ League.create( name:'Eredivisie',
                api_football_data_id:433)
                
 
-Team.delete_all
-
 # ENGLISH PREMIER LEAGUE
+Team.create(name: 'Manchester United FC',     code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/d/da/Manchester_United_FC.svg',            api_football_data_id:66)
 Team.create(name: 'Hull City FC',             code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/a/a9/Hull_City_AFC.svg',                   api_football_data_id:322)
 Team.create(name: 'Leicester City FC',        code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/en/6/63/Leicester02.png',                     api_football_data_id:338)
 Team.create(name: 'Southampton FC',           code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/c/c9/FC_Southampton.svg',                  api_football_data_id:340)
@@ -67,7 +64,6 @@ Team.create(name: 'Swansea City FC',          code: 'xxx', image_url: 'http://up
 Team.create(name: 'Manchester City FC',       code: 'xxx', image_url: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg',       api_football_data_id:65)
 Team.create(name: 'Sunderland AFC',           code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/6/60/AFC_Sunderland.svg',                  api_football_data_id:71)
 Team.create(name: 'AFC Bournemouth',          code: 'xxx', image_url: 'https://upload.wikimedia.org/wikipedia/de/4/41/Afc_bournemouth.svg',                api_football_data_id:1044)
-Team.create(name: 'Manchester United FC',     code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/d/da/Manchester_United_FC.svg',            api_football_data_id:66)
 Team.create(name: 'Arsenal FC',               code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',                      api_football_data_id:57)
 Team.create(name: 'Liverpool FC',             code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/0/0a/FC_Liverpool.svg',                    api_football_data_id:64)
 Team.create(name: 'Chelsea FC',               code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/5/5c/Chelsea_crest.svg',                   api_football_data_id:61)
@@ -179,3 +175,25 @@ Team.create(name: 'Sparta Rotterdam',         code: 'xxx', image_url: 'https://u
 Team.create(name: 'Ajax Amsterdam',           code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/7/79/Ajax_Amsterdam.svg',                api_football_data_id:678)
 Team.create(name: 'Roda JC Kerkrade',         code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/3/36/Roda_JC_Kerkrade_(2011).svg',       api_football_data_id:665)
 Team.create(name: 'Heracles Almelo',          code: 'xxx', image_url: 'http://upload.wikimedia.org/wikipedia/de/d/d8/Heracles_Almelo.svg',               api_football_data_id:671)
+
+Standing.create(league:             League.first,
+                team:               Team.first,
+                matchday:           2,
+                games_played:       2,
+                points:             6,
+                goals:              2,
+                goals_against:      0,
+                goal_difference:    2,
+                wins:               2,
+                draws:              0,
+                losses:             0,
+                home_goals:         1,
+                home_goals_against: 0,
+                home_wins:          1,
+                home_draws:         0,
+                home_losses:        0,
+                away_goals:         1,
+                away_goals_against: 0,
+                away_wins:          1,
+                away_draws:         0,
+                away_losses:        0)

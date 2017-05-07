@@ -1,5 +1,7 @@
 class Team < ApplicationRecord
   
+  has_many :standings
+  
   validates :name,
             :code,
             :image_url, 

@@ -6,12 +6,12 @@ class LeagueTest < ActiveSupport::TestCase
   
   def new_league
     League.new( name:                  "Champions League",
-                 image_url:             "logo.jpg",
-                 current_matchday:      1,
-                 number_of_matchdays:   38,
-                 number_of_teams:       20,
-                 number_of_games:       380,
-                 api_football_data_id:  440)
+                image_url:             "logo.jpg",
+                current_matchday:      1,
+                number_of_matchdays:   38,
+                number_of_teams:       20,
+                number_of_games:       380,
+                api_football_data_id:  440)
   end
   
   test "league attributes must not be empty" do

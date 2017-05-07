@@ -1,5 +1,7 @@
 class League < ApplicationRecord
   
+  has_many :standings
+  
   validates :name, 
             :image_url,
             :current_matchday,
@@ -24,6 +26,6 @@ class League < ApplicationRecord
   validates :image_url, format: {
     with: %r{\.(gif|jpg|png|svg)\Z}i,
     message: 'must be a URL for GIF, JPG, PNG, or SVG image.'
-  } 
-                            
+  }
+
 end
