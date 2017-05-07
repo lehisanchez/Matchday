@@ -7,7 +7,8 @@ class StandingsControllerTest < ActionDispatch::IntegrationTest
     @update = { 
       league_id:          leagues(:premier_league).id,
       team_id:            teams(:chelsea).id,
-      matchday:           4,
+      matchday:           5,
+      position:           1,
       games_played:       3,
       points:             9,
       goals:              3,

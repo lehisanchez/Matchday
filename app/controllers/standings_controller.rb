@@ -24,6 +24,7 @@ class StandingsController < ApplicationController
       params.require(:standing).permit( :league_id, 
                                         :team_id, 
                                         :matchday,
+                                        :position,
                                         :games_played,
                                         :points,
                                         :goals,

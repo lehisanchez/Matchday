@@ -37,6 +37,7 @@ class StandingTest < ActiveSupport::TestCase
     assert standing.errors[:league_id].any?
     assert standing.errors[:team_id].any?
     assert standing.errors[:games_played].any?
+    assert standing.errors[:position].any?
     assert standing.errors[:points].any?
     assert standing.errors[:goals].any?
     assert standing.errors[:goals_against].any?
@@ -100,6 +101,9 @@ class StandingTest < ActiveSupport::TestCase
   test "standing must not be a duplicate" do
     standing = @standing.dup
     assert_not standing.valid?
+    assert_not standing.errors[:matchday].any?
+    assert_not standing.errors[:league_id].any?
+    assert_not standing.errors[:team_id].any?
   end
   
 end

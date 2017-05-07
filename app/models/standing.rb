@@ -5,13 +5,15 @@ class Standing < ApplicationRecord
   
   validates :matchday,
             :team_id,
-            :league_id, presence: true
+            :league_id,
+            :position, presence: true
 
   validates :matchday,
             :team_id,
             :league_id, numericality: { greater_than_or_equal_to: 1, only_integer: true }
             
   validates :games_played,
+            :position,
             :points,
             :goals,
             :goals_against,
@@ -31,6 +33,6 @@ class Standing < ApplicationRecord
               
   validates :goal_difference, numericality: { only_integer: true }
   
-  validates :matchday, uniqueness: { scope: [:league_id, :team_id] }
+  validates :team_id, uniqueness: { scope: [:league_id, :matchday, :position] }
   
 end

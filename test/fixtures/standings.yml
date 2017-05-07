@@ -2,6 +2,7 @@ matchday_1:
   league: premier_league
   team: chelsea
   matchday: 1
+  position: 1
   games_played: 1
   points: 3
   goals: 1
@@ -25,6 +26,7 @@ matchday_2:
   league: premier_league
   team: chelsea
   matchday: 2
+  position: 2
   games_played: 2
   points: 6
   goals: 2
