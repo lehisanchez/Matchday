@@ -1,7 +1,8 @@
 class League < ApplicationRecord
   
-  has_and_belongs_to_many :teams
-  has_many :standings
+  has_and_belongs_to_many :teams, inverse_of: :leagues
+  has_many :standings, inverse_of: :league
+  has_many :matches,   inverse_of: :league
   
   validates :name, 
             :image_url,

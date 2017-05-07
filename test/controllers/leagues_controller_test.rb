@@ -4,13 +4,13 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @league = leagues(:premier_league)
-    @update = { name:                 'Eredivisie',
-                image_url:            'https://upload.wikimedia.org/wikipedia/en/1/1e/Eredivisie_logo.svg',
+    @update = { name:                 'MLS',
+                image_url:            'MLS_Logo.svg',
                 current_matchday:     1,
                 number_of_matchdays:  38,
                 number_of_teams:      20,
                 number_of_games:      380,
-                api_football_data_id: 433
+                api_football_data_id: 500
     }
   end
   
@@ -27,6 +27,7 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
   
   test "should update league" do
     patch league_url(@league), params: { league: @update }
+    assert_equal(@update[:name], League.find(@league.id).name)
   end
 
   test "should destroy league" do

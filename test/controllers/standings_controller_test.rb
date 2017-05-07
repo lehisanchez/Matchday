@@ -37,6 +37,7 @@ class StandingsControllerTest < ActionDispatch::IntegrationTest
   
   test "should update standing" do
     patch standing_url(@standing), params: { standing: @update }
+    assert_equal(@update[:matchday], Standing.find(@standing.id).matchday)
   end
 
   test "should destroy standing" do

@@ -24,6 +24,9 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:name, :code, :image_url, :api_football_data_id)
+      params.require(:team).permit( :name, 
+                                    :code, 
+                                    :image_url, 
+                                    :api_football_data_id)
     end
 end

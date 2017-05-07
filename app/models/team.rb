@@ -1,7 +1,9 @@
 class Team < ApplicationRecord
 
-  has_and_belongs_to_many :leagues
-  has_many :standings
+  has_and_belongs_to_many :leagues, inverse_of: :teams
+  has_many :standings, inverse_of: :team
+  has_many :home_matches, class_name: "Match", foreign_key: :home_team_id, inverse_of: :team
+  has_many :away_matches, class_name: "Match", foreign_key: :away_team_id, inverse_of: :team
   
   validates :name,
             :code,

@@ -4,6 +4,32 @@ class StandingTest < ActiveSupport::TestCase
 
   fixtures :standings
   
+  def setup
+    @standing = Standing.create(
+      league: leagues(:premier_league),
+      team: teams(:chelsea),
+      matchday: 1,
+      games_played: 1,
+      points: 3,
+      goals: 1,
+      goals_against: 0,
+      goal_difference: 1,
+      wins: 1,
+      draws: 0,
+      losses: 0,
+      home_goals: 1,
+      home_goals_against: 0,
+      home_wins: 1,
+      home_draws: 0,
+      home_losses: 0,
+      away_goals: 0,
+      away_goals_against: 0,
+      away_wins: 0,
+      away_draws: 0,
+      away_losses: 0
+    )
+  end
+  
   test "standing attributes must not be empty" do
     standing = Standing.new
     assert standing.invalid?
@@ -72,15 +98,8 @@ class StandingTest < ActiveSupport::TestCase
   end
   
   test "standing must not be a duplicate" do
-    standing_1 = standings(:matchday_1)
-    standing_2 = standings(:matchday_2)
-    
-    assert standing_2.valid?
-  
-    standing_2.matchday = 1
-    
-    assert standing_2.invalid?
-    assert standing_2.errors[:matchday].any?
+    standing = @standing.dup
+    assert_not standing.valid?
   end
   
 end

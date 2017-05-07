@@ -20,6 +20,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   
   test "should update team" do
     patch team_url(@team), params: { team: @update }
+    assert_equal(@update[:name], Team.find(@team.id).name)
   end
 
   test "should destroy team" do

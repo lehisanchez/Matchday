@@ -1,12 +1,11 @@
 class Standing < ApplicationRecord
   
-  belongs_to :league
-  belongs_to :team
+  belongs_to :league, inverse_of: :standings
+  belongs_to :team,   inverse_of: :standings
   
   validates :matchday,
             :team_id,
-            :league_id,
-            presence: true
+            :league_id, presence: true
 
   validates :matchday,
             :team_id,
@@ -28,8 +27,7 @@ class Standing < ApplicationRecord
             :away_goals_against,
             :away_wins,
             :away_draws,
-            :away_losses,
-            numericality: { greater_than_or_equal_to: 0, only_integer: true }
+            :away_losses, numericality: { greater_than_or_equal_to: 0, only_integer: true }
               
   validates :goal_difference, numericality: { only_integer: true }
   

@@ -24,7 +24,13 @@ class LeaguesController < ApplicationController
     end
 
     def league_params
-      params.require(:league).permit(:name, :image_url, :current_matchday, :number_of_matchdays, :number_of_teams, :number_of_games, :api_football_data_id)
+      params.require(:league).permit( :name, 
+                                      :image_url, 
+                                      :current_matchday, 
+                                      :number_of_matchdays, 
+                                      :number_of_teams, 
+                                      :number_of_games, 
+                                      :api_football_data_id)
     end
   
 end
