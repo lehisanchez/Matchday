@@ -1,11 +1,15 @@
 <div class="container" id="welcome-container">
   <div class="row">
-    <% @leagues.each do |league| %>
-      <div class="col-lg-4 logo-container">
-        <div class="logo-wrapper rounded" style="border: 1px solid #ddd;">
-          <%= link_to image_tag(league.image_url, class:'logo'), league_path(league) %>
-        </div>
-      </div>
+    <% cache @leagues do %>
+      <% @leagues.each do |league| %>
+        <% cache league do %>
+          <div class="col-lg-4 logo-container">
+            <div class="logo-wrapper rounded" style="border: 1px solid #ddd;">
+              <%= link_to image_tag(league.image_url, class:'logo'), league_path(league) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
