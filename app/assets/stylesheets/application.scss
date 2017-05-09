@@ -1,0 +1,56 @@
+/* 
+ * This is a manifest file that'll be compiled into application.css, which will include all the files 
+ * listed below. 
+ * 
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's 
+ * vendor/assets/stylesheets directory can be referenced here using a relative path. 
+ * 
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the 
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS 
+ * files in this directory. Styles in this file should be added after the last require_* statement. 
+ * It is generally better to create a new file per style scope. 
+ * 
+ */ 
+ 
+@import "bootstrap";
+
+#league-table-container {
+  padding-top: 20px;
+}
+
+#league-table-logo-container {
+  padding-top: 20px;
+}
+
+#league-table td, #league-table th {
+  padding: 7px;
+}
+
+#league-table {
+  margin-top: 20px;
+}
+
+#welcome-container {
+  margin-top: 30px;
+}
+
+.logo-wrapper {
+  padding: 10px;
+  text-align: center;
+}
+
+.logo-container {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+img.logo {
+  height: 200px;
+  width: 240px;
+  padding: 20px;
+}
+
+img.club-logo {
+  height: 130px;
+  max-width: 100%;
+}

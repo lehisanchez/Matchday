@@ -10,6 +10,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170509024150) do
+
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.integer "current_matchday"
+    t.integer "number_of_matchdays"
+    t.integer "number_of_teams"
+    t.integer "number_of_games"
+    t.integer "api_football_data_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "leagues_teams", id: false, force: :cascade do |t|
+    t.integer "league_id", null: false
+    t.integer "team_id", null: false
+    t.index ["league_id", "team_id"], name: "index_leagues_teams_on_league_id_and_team_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "league_id"
+    t.datetime "date"
+    t.string "status"
+    t.integer "matchday"
+    t.integer "home_team_id"
+    t.integer "away_team_id"
+    t.integer "home_team_goals"
+    t.integer "away_team_goals"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["league_id"], name: "index_matches_on_league_id"
+  end
+
+  create_table "standings", force: :cascade do |t|
+    t.integer "league_id"
+    t.integer "team_id"
+    t.integer "matchday"
+    t.integer "games_played"
+    t.integer "points"
+    t.integer "goals"
+    t.integer "goals_against"
+    t.integer "goal_difference"
+    t.integer "wins"
+    t.integer "draws"
+    t.integer "losses"
+    t.integer "home_goals"
+    t.integer "home_goals_against"
+    t.integer "home_wins"
+    t.integer "home_draws"
+    t.integer "home_losses"
+    t.integer "away_goals"
+    t.integer "away_goals_against"
+    t.integer "away_wins"
+    t.integer "away_draws"
+    t.integer "away_losses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position"
+    t.index ["league_id"], name: "index_standings_on_league_id"
+    t.index ["team_id", "league_id", "matchday"], name: "index_standings_on_team_id_and_league_id_and_matchday", unique: true
+    t.index ["team_id"], name: "index_standings_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "image_url"
+    t.integer "api_football_data_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
 end

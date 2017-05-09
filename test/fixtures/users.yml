@@ -1,0 +1,7 @@
+ronaldo:
+  email: ronaldo@realmadrid.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+messi:
+  email: messi@barcelona.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
