@@ -23,6 +23,7 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
   test "should show league" do
     get league_url(@league)
     assert_response :success
+    assert_select '#league-table-logo-container img'
   end
   
   test "should update league" do
