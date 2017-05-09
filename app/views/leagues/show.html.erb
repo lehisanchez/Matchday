@@ -29,17 +29,21 @@
       </tr>
     </thead>
     <tbody>
-      <% @league.standings.where(matchday: @league.current_matchday).order(:position).each_with_index do |s, index| %>
-        <tr>
-          <td class="text-center"  width="35px"><%= index + 1 %></td>
-          <td><%= image_tag(s.team.image_url, size: 20) %> <%= s.team.name %></td>
-          <td class="text-center"><%= s.games_played %></td>
-          <td class="text-center hidden-sm-down"><%= s.wins %></td>
-          <td class="text-center hidden-sm-down"><%= s.draws %></td>
-          <td class="text-center hidden-sm-down"><%= s.losses %></td>
-          <td class="text-center hidden-sm-down"><%= s.goal_difference %></td>
-          <td class="text-center"><strong><%= s.points %></strong></td>
-        </tr>
+      <% cache @league do %>
+        <% @league.standings.where(matchday: @league.current_matchday).order(:position).each_with_index do |s, index| %>
+          <% cache s do %>
+            <tr>
+              <td class="text-center"  width="35px"><%= index + 1 %></td>
+              <td><%= image_tag(s.team.image_url, size: 20) %> <%= s.team.name %></td>
+              <td class="text-center"><%= s.games_played %></td>
+              <td class="text-center hidden-sm-down"><%= s.wins %></td>
+              <td class="text-center hidden-sm-down"><%= s.draws %></td>
+              <td class="text-center hidden-sm-down"><%= s.losses %></td>
+              <td class="text-center hidden-sm-down"><%= s.goal_difference %></td>
+              <td class="text-center"><strong><%= s.points %></strong></td>
+            </tr>
+          <% end %>
+        <% end %>
       <% end %>
     </tbody>
   </table>
