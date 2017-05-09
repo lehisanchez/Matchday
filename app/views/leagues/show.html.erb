@@ -1,0 +1,46 @@
+<div id="league-table-logo-container" class="text-center">
+  <%= image_tag(@league.image_url, height: 100) %>
+</div>
+
+<div id="league-table-container" class="container"> 
+  <div class="progress">
+    <div class="progress-bar bg-info" 
+         role="progressbar" 
+         style="width: <%= number_to_percentage(@league.percent_complete, precision: 0) %>" 
+         aria-valuenow="<%= @league.current_matchday %>" 
+         aria-valuemin="0" 
+         aria-valuemax="<%= @league.number_of_matchdays %>">Season is <%= number_to_percentage(@league.percent_complete, precision: 0) %> complete</div>
+  </div>
+  
+  <table id="league-table" class="table table-bordered table-sm table-relegation">
+    <thead>
+      <tr>
+        <th colspan="100%" class="text-center"><small><strong>Matchday 26</strong></small></th>
+      </tr>
+      <tr>
+        <th class="text-center">#</th>
+        <th>Team</th>
+        <th class="text-center" width="35px">GP</th>
+        <th class="text-center hidden-sm-down" width="35px">W</th>
+        <th class="text-center hidden-sm-down" width="35px">D</th>
+        <th class="text-center hidden-sm-down" width="35px">L</th>
+        <th class="text-center hidden-sm-down" width="35px">GD</th>
+        <th class="text-center" width="35px">Pt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @league.standings.where(matchday: @league.current_matchday).order(:position).each_with_index do |s, index| %>
+        <tr>
+          <td class="text-center"  width="35px"><%= index + 1 %></td>
+          <td><%= image_tag(s.team.image_url, size: 20) %> <%= s.team.name %></td>
+          <td class="text-center"><%= s.games_played %></td>
+          <td class="text-center hidden-sm-down"><%= s.wins %></td>
+          <td class="text-center hidden-sm-down"><%= s.draws %></td>
+          <td class="text-center hidden-sm-down"><%= s.losses %></td>
+          <td class="text-center hidden-sm-down"><%= s.goal_difference %></td>
+          <td class="text-center"><strong><%= s.points %></strong></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
