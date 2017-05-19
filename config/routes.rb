@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   authenticated :user do
     get '/', to: redirect('/dashboard')
   end
-
-  resources :leagues,   except: [:new, :edit, :index], format: false
+  
+  get 'leagues/:id/matchday/:matchday' => 'leagues#show'
+  
+  resources :leagues,   except: [:new, :edit], format: false
   resources :teams,     except: [:new, :edit, :index], format: false
   resources :matches,   except: [:new, :edit, :index, :show], format: false
   resources :standings, except: [:new, :edit, :index, :show], format: false
   
-  root 'welcome#index'
+  root 'leagues#index'
 end

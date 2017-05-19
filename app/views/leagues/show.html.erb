@@ -6,16 +6,18 @@
   <div class="progress">
     <div class="progress-bar bg-info" 
          role="progressbar" 
-         style="width: <%= number_to_percentage(@league.percent_complete, precision: 0) %>" 
-         aria-valuenow="<%= @league.current_matchday %>" 
+         style="width: <%= number_to_percentage(@league.percent_complete(@matchday), precision: 0) %>" 
+         aria-valuenow="<%= @matchday %>" 
          aria-valuemin="0" 
-         aria-valuemax="<%= @league.number_of_matchdays %>">Season is <%= number_to_percentage(@league.percent_complete, precision: 0) %> complete</div>
+         aria-valuemax="<%= @league.number_of_matchdays %>">Season is <%= number_to_percentage(@league.percent_complete(@matchday), precision: 0) %> complete</div>
   </div>
   
   <table id="league-table" class="table table-bordered table-sm table-relegation">
     <thead>
       <tr>
-        <th colspan="100%" class="text-center"><small><strong>Matchday 26</strong></small></th>
+        <th colspan="100%" class="text-center">
+          
+        </th>
       </tr>
       <tr>
         <th class="text-center">#</th>
@@ -30,7 +32,7 @@
     </thead>
     <tbody>
       <% cache @league do %>
-        <% @league.standings.where(matchday: @league.current_matchday).order(:position).each_with_index do |s, index| %>
+        <% @league.standings.where(matchday: @matchday).order(:position).each_with_index do |s, index| %>
           <% cache s do %>
             <tr>
               <td class="text-center"  width="35px"><%= index + 1 %></td>

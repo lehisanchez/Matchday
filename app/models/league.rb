@@ -30,8 +30,8 @@ class League < ApplicationRecord
     message: 'must be a URL for GIF, JPG, PNG, or SVG image.'
   }
   
-  def percent_complete
-    (self.current_matchday.to_f / self.number_of_matchdays.to_f) * 100
+  def percent_complete(matchday)
+    (matchday.to_f / self.number_of_matchdays.to_f) * 100
   end
   
   private

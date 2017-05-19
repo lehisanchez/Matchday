@@ -66,3 +66,9 @@ end
 
 # jQuery
 gem 'jquery-rails'
+
+# Faraday - used to make API calls to Football-Data
+gem 'faraday'
+
+# Whenever - schedule cron jobs
+gem 'whenever', :require => false
