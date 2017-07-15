@@ -170,7 +170,7 @@ league.teams << Team.create(name: 'Toulouse FC',              code: 'xxx', image
 # ==============================================================================
 # ==============================================================================
 league = League.create( name:'Eredivisie',                                                                          
-                        image_url:'https://upload.wikimedia.org/wikipedia/en/1/1e/Eredivisie_logo.svg',
+                        image_url:'https://upload.wikimedia.org/wikipedia/commons/0/0f/Eredivisie_nieuw_logo_2017-.svg',
                         current_matchday: 33,
                         number_of_matchdays: 38,
                         number_of_teams: 20,
